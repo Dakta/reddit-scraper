@@ -1,0 +1,12 @@
+# Ignore config file
+scraper.cfg
+
+# Ignore editor cached versions
+*.*~
+
+# Ignore compiled python
+*.pyc
+
+# Ignore logfiles
+*.log
+
