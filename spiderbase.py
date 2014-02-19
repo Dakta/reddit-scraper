@@ -11,6 +11,8 @@ class SpiderBase(object):
         self.username = username
         self.password = password
         self.http = httplib2.Http()
+        self.max_attempts = 3
+        self.attempts = 0
 
     def _login(self):
         headers = {}
@@ -23,19 +25,25 @@ class SpiderBase(object):
         return headers
 
     def _get_json(self, uri):
+        self.attempts = 0
         try:
             response, content = self.http.request(uri, 'GET', headers=self._login())
         except httplib2.ServerNotFoundError, e:
-            # self._recurse(uri)
-            self._get_json(uri)
+            self._recurse(uri)
         
         if response['status'] == '200':
             out = json.loads(content)
             if out is None:
-                # self._recurse(uri)
-                self._get_json(uri)
+                self._recurse(uri)
             return out
         else:
-            # self._recurse(uri)
-            self._get_json(uri)
+            self._recurse(uri)
 
+    def _recurse(uri):
+        self.attempts = self.attempts + 1
+
+        if attempts <= self.max_attempts:
+            self._get_json(uri)
+        else:
+            # error handling?
+            pass
