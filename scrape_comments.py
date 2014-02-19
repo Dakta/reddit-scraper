@@ -120,11 +120,13 @@ class Monitor(SpiderBase):
         session.commit()
             
         self.logger.debug( "%s: %s %s" % (current_process().name, datetime.now(), new_comments) )
-        return (next_newest_id)
+        
+        # no need to return anything right now
+        # return (next_newest_id)
 
-
-def main():
-    comments = Monitor('user', 'pass')
+# Unused. What was I even going to do with this?
+# def main():
+#     comments = Monitor('user', 'pass')
 
 
 if __name__ == "__main__":
