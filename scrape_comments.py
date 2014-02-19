@@ -138,12 +138,7 @@ class Monitor(SpiderBase):
         # no need to return anything right now
         # return (next_newest_id)
 
-# Unused. What was I even going to do with this?
-# def main():
-#     comments = Monitor('user', 'pass')
-
-
-if __name__ == "__main__":
+def main():
     # we get cfg_file from models.py
     # see import at the top
     
@@ -155,4 +150,7 @@ if __name__ == "__main__":
     print "  Success!"
     
     comments.monitor_comments()
-    
+
+
+if __name__ == "__main__":
+    main()
