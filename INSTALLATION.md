@@ -25,18 +25,18 @@ Other required modules, such as urllib and simplejson, should have shipped with 
 
 3. Set up the config file with the correct values for database and reddit account.
 
-     $ mv scraper.cfg.example scraper.cfg
+       $ mv scraper.cfg.example scraper.cfg
 
 3. Confirm database connectivity and create the database tables.
    Fire up an interactive Python session (`$ python`), import everything from models (`from models import *`), and issue the `create_all()` command to SQLALchemy (`Base.metadata.create_all(engine)`):
    
-     $ python
-     Python 2.6.9 (unknown, Oct 29 2013, 19:58:13) 
-     [GCC 4.6.3 20120306 (Red Hat 4.6.3-2)] on linux2
-     Type "help", "copyright", "credits" or "license" for more information.
-     >>> from models import *
-     >>> Base.metadata.create_all(engine)
-     >>> <ctrl-D>
+       $ python
+       Python 2.6.9 (unknown, Oct 29 2013, 19:58:13) 
+       [GCC 4.6.3 20120306 (Red Hat 4.6.3-2)] on linux2
+       Type "help", "copyright", "credits" or "license" for more information.
+       >>> from models import *
+       >>> Base.metadata.create_all(engine)
+       >>> <ctrl-D>
 
 4. Run the scraper: `$ python scrape_comments.py`
 
