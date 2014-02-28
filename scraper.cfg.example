@@ -1,0 +1,11 @@
+[reddit]
+username = username # reddit username, /r/<username>
+password = password # reddit account password
+
+[database]
+system = mysql # tested with mysql, should work with postgres if you have the right driver
+username = user # database username
+password = pass # database password
+host = example.com # database host (probably localhost)
+database = database_name # database name
+
