@@ -28,7 +28,8 @@ else:
 # We need multi-byte Unicode support if we're in MySQL.
 # Note: MySQL database needs to have everything set up properly for 4-byte UTF-8
 # see: http://mathiasbynens.be/notes/mysql-utf8mb4
-engine.execute("SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;")
+if cfg_file.get('database', 'system').lower() == 'musql':
+    engine.execute("SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;")
 
 Base = declarative_base()
 Session = sessionmaker(bind=engine, expire_on_commit=False)
