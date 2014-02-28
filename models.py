@@ -36,7 +36,7 @@ else:
 # We need multi-byte Unicode support if we're in MySQL.
 # Note: MySQL database needs to have everything set up properly for 4-byte UTF-8
 # see: http://mathiasbynens.be/notes/mysql-utf8mb4
-if cfg_file.get('database', 'system').lower() == 'musql':
+if cfg_file.get('database', 'system').lower() == 'mysql':
     engine.execute("SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci;")
 
 Base = declarative_base()
