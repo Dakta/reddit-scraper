@@ -16,7 +16,7 @@ if cfg_file.get('database', 'system').lower() == 'sqlite':
     engine = create_engine(
         cfg_file.get('database', 'system')+':///'+\
         cfg_file.get('database', 'database'))
-else:
+elif cfg_file.get('database', 'system').lower() == 'mysql':
     engine = create_engine(
         cfg_file.get('database', 'system')+'://'+\
         cfg_file.get('database', 'username')+':'+\
@@ -24,6 +24,14 @@ else:
         cfg_file.get('database', 'host')+'/'+\
         cfg_file.get('database', 'database')+\
         '?charset=utf8')
+else:
+    engine = create_engine(
+        cfg_file.get('database', 'system')+'://'+\
+        cfg_file.get('database', 'username')+':'+\
+        cfg_file.get('database', 'password')+'@'+\
+        cfg_file.get('database', 'host')+'/'+\
+        cfg_file.get('database', 'database'))
+
 
 # We need multi-byte Unicode support if we're in MySQL.
 # Note: MySQL database needs to have everything set up properly for 4-byte UTF-8
