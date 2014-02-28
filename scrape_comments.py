@@ -36,7 +36,8 @@ class Monitor(SpiderBase):
         data, next_newest_id, after = self._parse_json(url)
 
         while True:
-            start = datetime.now()
+            # start = datetime.now()
+            start = time.time()
                         
             data, newest_id, after = self._parse_json(url)
             
@@ -48,11 +49,13 @@ class Monitor(SpiderBase):
             # increment
             next_newest_id = newest_id
             
-            sleep = start + timedelta(seconds=self.delay) - datetime.now()
-            self.logger.debug("Sleeping for %s" % sleep)
+            # sleep = (start + timedelta(seconds=self.delay)) - datetime.now()
+            sleep = (start + self.delay) - time.time()
+            sleep = max(0, sleep)
+            self.logger.debug("Sleeping for %s seconds" % sleep)
             
             # from http://stackoverflow.com/questions/2880713/time-difference-in-seconds-as-a-floating-point#comment2931070_2880735
-            sleep = sleep.seconds + (float(1) / sleep.microseconds)
+            # sleep = sleep.seconds + (float(1) / sleep.microseconds)
             
             time.sleep( sleep )
 
