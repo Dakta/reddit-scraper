@@ -70,13 +70,10 @@ class Monitor(SpiderBase):
         print "new_comments " + str(new_comments) + ", after " + str(after) + ", next_newest " + str(next_newest)
         return (new_comments, after, next_newest)
 
-def main():
-    comments = Monitor('***REMOVED***', '***REMOVED***')
-
 
 if __name__ == "__main__":
     print "Logging in..."
-    comments = Monitor('***REMOVED***', '***REMOVED***')
+    comments = Monitor('', '')
     print "  Success!"
     
     comments.monitor_comments()
